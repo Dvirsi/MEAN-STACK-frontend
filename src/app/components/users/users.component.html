@@ -1,0 +1,14 @@
+
+<!-- Serach user or add user -->
+<div class="serachDiv">
+    <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search by name or email"  type="text" #search (keyup)="searchUser(search.value)">
+    </mat-form-field> &nbsp; &nbsp; 
+    <button mat-raised-button color="primary" (click)="addNewUser()">Add</button>
+</div>
+
+<!-- Users components -->
+<div class="usersDiv">
+    <app-user (childDeleted)="childDeleted($event)" [user]="user" *ngFor="let user of usersToShow"></app-user>
+</div>

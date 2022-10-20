@@ -1,0 +1,22 @@
+
+<div class="taskDiv">
+    <!-- Show V when task completed -->
+    <div class="completedMark" *ngIf="completed"> 
+        <mat-icon>done</mat-icon> 
+    </div>
+
+    <!-- Show button when task uncompleted -->
+    <button *ngIf="!completed" (click)="markAsCompleted()" class="markCompletButton" style="background-color: orange;" mat-mini-fab aria-label="Example icon-button with a heart icon">
+        <mat-icon>library_add_check</mat-icon>
+      </button>
+
+    <mat-card-title>{{task.title}}</mat-card-title>
+    
+    <!-- Delete task -->
+    <div class="deleteIcon">
+        <a (click)="deleteTask()"><mat-icon>cancel_presentation</mat-icon></a>
+    </div>   
+</div>
+<br/>
+
+

@@ -1,0 +1,53 @@
+
+<div class="TitleDiv">
+    <h1>Tasks and Posts for ID : {{userData._id.slice(-2)}}</h1>
+</div>
+
+<div class="todosAndPostsDiv">
+
+    <!-- Tasks  -->
+    <div *ngIf="!todoOrAdd">
+        <button mat-fab color="primary" (click)="todoOrAdd = !todoOrAdd">Add task</button>
+    </div>
+    <!-- Tasks compoents -->
+    <div  *ngIf="!todoOrAdd" class="taskAndPost"> 
+        <app-todo (taskDeleted)="taskDeleted($event)"  [userData]="userData" [task]="task" *ngFor="let task of userTasks"></app-todo>
+    </div>
+    <!-- Add Task -->
+    <div *ngIf="todoOrAdd" class="addTaskOrPostDiv">
+        <h4>Add Task</h4>
+        <form #f="ngForm" (ngSubmit)="addNewTask(newTask.value, f.valid)">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Title</mat-label>
+                  <input #newTask name="newTask" required matInput #message maxlength="256" placeholder="Ex. I need todo">
+                  <mat-hint align="start"><strong>Enter your task</strong> </mat-hint>
+                  <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                </mat-form-field>
+                <input type="button" value="Cancel" (click)="todoOrAdd = !todoOrAdd">
+                <input type="submit" value="Add">
+        </form>
+        <br/>
+    </div>
+    <br/><br/>
+
+    <!-- Posts -->
+    <div *ngIf="!postOrAdd">
+        <button mat-fab  (click)="postOrAdd = !postOrAdd">Add post</button>
+    </div>
+    <!-- Posts components -->
+    <div *ngIf="!postOrAdd" class="taskAndPost"> 
+        <app-post (postDeleted)="postDeleted($event)" [post]="post" *ngFor="let post of userPosts"></app-post>
+    </div>
+    <!-- Add Post -->
+    <div *ngIf="postOrAdd" class="addTaskOrPostDiv">
+        <h4>Add Post</h4>
+        Title : <input #newPostTitle type="text">
+        <br/><br/>
+        Body : <input #newPostBody type="text">
+        <br/><br/>
+        
+        <input type="button" value="Cancel" (click)="postOrAdd = !postOrAdd">
+        <input type="button" value="Add" (click)="addNewPost(newPostTitle.value, newPostBody.value)">    
+    </div>
+</div>
+    

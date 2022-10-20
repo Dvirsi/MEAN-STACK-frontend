@@ -1,0 +1,29 @@
+.todosAndPostsDiv
+{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.taskAndPost
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addTaskOrPostDiv
+{
+    width: 90%; 
+}
+
+.TitleDiv
+{
+    height: 65px;
+    padding-top: 10px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}

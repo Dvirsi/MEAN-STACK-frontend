@@ -1,0 +1,47 @@
+<br/>
+
+<!-- Change background color if user selected and change border if tasks completed-->
+<div class="userDetailsDiv" [style.borderColor]=" endTodos ? 'green' : 'red' " [style.background-color]="backGroundCurrentUser()">
+    <a (click)="showMoreData();"> ID : {{user._id.slice(-2)}} </a><br/><br/>
+
+    <!-- Form for update user data -->
+    <form #f="ngForm" (ngSubmit)="updateUser(f.valid)">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter Name" required type="text" name="name" [(ngModel)]="user.name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Enter Email" required type="text" name="email" [(ngModel)]="user.email">
+        </mat-form-field>
+         <br/>
+
+         <!-- Show adreess div on hover and close div on click -->
+        <button mat-raised-button (mouseover)="openAddressDiv=true" (click)="openAddressDiv=false">Other Data</button>
+        &nbsp; &nbsp; &nbsp;
+        <div *ngIf="openAddressDiv" >
+                <br/>
+                <mat-form-field>
+                    <mat-label>Street</mat-label>
+                    <input matInput placeholder="Enter Email" type="text" name="street" [(ngModel)]="user.street">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="Enter Email" type="text" name="city" [(ngModel)]="user.city">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Zip Code</mat-label>
+                    <input matInput placeholder="Enter Email" type="number" name="zip"  [(ngModel)]="user.zipcode">
+                </mat-form-field> 
+        </div>
+        
+        <!-- Buttons move down when open address div -->
+        <button type="submit" mat-raised-button color="primary">Update</button>&nbsp;
+        <button mat-raised-button color="warn" (click)="deleteUser()">Delete</button>
+        <br/><br/>
+    </form>
+</div>
+

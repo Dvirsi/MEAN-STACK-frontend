@@ -1,0 +1,34 @@
+
+.taskDiv
+{
+    display: flex; 
+    align-items: center;
+    justify-content:space-between;
+    width: 450px;
+    overflow: auto;
+    background-color: white;
+    width: 450px;
+    height: 60px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.markCompletButton
+{
+    margin-left: 7px;
+    background-color: orange;
+}
+
+.deleteIcon
+{
+    align-self:flex-start;
+    margin-right: 3px;
+    margin-top: 3px;
+    color: red;
+} 
+
+.completedMark
+{
+    margin-left: 7px;
+}
+
